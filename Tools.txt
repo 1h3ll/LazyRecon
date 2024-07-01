@@ -1,0 +1,31 @@
+#Subdomain Finder 
+https://github.com/projectdiscovery/subfinder
+https://github.com/santiko/KnockPy
+
+#httpx
+https://github.com/projectdiscovery/httpx
+
+#Crawer
+https://github.com/projectdiscovery/katana
+https://github.com/lc/gau
+
+#JS Analyzer
+https://github.com/m4ll0k/SecretFinder
+https://github.com/PortSwigger/js-beautifier
+
+#XSS Tools
+https://github.com/Emoe/kxss
+https://github.com/s0md3v/XSStrike
+
+#SQLi
+https://github.com/r0oth3x49/ghauri
+
+#Open Redirection
+https://github.com/devanshbatham/OpenRedireX
+
+#Broken Link Checker
+https://github.com/stevenvachon/broken-link-checker
+
+#Others
+https://github.com/mazen160/jwt-pwn
+https://github.com/hakluke/hakip2host
