@@ -8,6 +8,9 @@ https://github.com/projectdiscovery/httpx
 #Paramspider
 https://github.com/devanshbatham/ParamSpider
 
+#WayBackUrls
+https://github.com/tomnomnom/waybackurls
+
 #Crawer
 https://github.com/projectdiscovery/katana
 https://github.com/lc/gau
