@@ -5,6 +5,9 @@ https://github.com/santiko/KnockPy
 #httpx
 https://github.com/projectdiscovery/httpx
 
+#Paramspider
+https://github.com/devanshbatham/ParamSpider
+
 #Crawer
 https://github.com/projectdiscovery/katana
 https://github.com/lc/gau
