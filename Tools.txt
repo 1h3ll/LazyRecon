@@ -32,6 +32,9 @@ https://github.com/devanshbatham/OpenRedireX
 #Broken Link Checker
 https://github.com/stevenvachon/broken-link-checker
 
+#Bug bounty dorks
+https://github.com/ashikkunjumon/Bug-Bounty-Dorks-Automation
+
 #Others
 https://github.com/mazen160/jwt-pwn
 https://github.com/hakluke/hakip2host
