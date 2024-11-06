@@ -61,7 +61,7 @@ sleep 3;
 
 #Installing GF
 echo -e "${BOLD_BLUE}Installing GF....${NC}";
-sudo go install github.com/tomnomnom/waybackurls@latest;
+sudo go install github.com/tomnomnom/gf@latest;
 cd ~;
 git clone https://github.com/1ndianl33t/Gf-Patterns;
 mkdir .gf;
@@ -75,7 +75,7 @@ cd ~; mkdir git; cd git;
 git clone https://github.com/r0oth3x49/ghauri.git;
 cd ghauri; python3 -m pip install --upgrade -r requirements.txt;
 python3 -m pip install -e .;
-echo -e "${GREEN}Got SecLists Successfully....${NC}";
+echo -e "${GREEN}Got Ghauri Successfully....${NC}";
 sleep 3;
 
 #Getting Xss0rRecon
