@@ -16,82 +16,82 @@ echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
 source ~/.profile
 
 #Checking GO installation
-if go version | grep -q "go version" && go version | grep -q "linux/amd64"; then echo "${BOLD_WHITE}Go Lang Installed successfully${NC}";
+if go version | grep -q "go version" && go version | grep -q "linux/amd64"; then echo -e "${BOLD_WHITE}Go Lang Installed successfully${NC}";
 
 #Installing HTTPX
-echo "${BOLD_BLUE}Installing HTTPX....${NC}";
+echo -e "${BOLD_BLUE}Installing HTTPX....${NC}";
 sudo go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest;
 sudo mv ~/go/bin/katana /usr/local/bin;
-echo "${GREEN}Installed Successfully....${NC}";
+echo -e "${GREEN}Installed Successfully....${NC}";
 sleep 3;
 
 #Installing WayBackURLs
-echo "${BOLD_BLUE}Installing WayBackURLs....${NC}";
+echo -e "${BOLD_BLUE}Installing WayBackURLs....${NC}";
 sudo go install github.com/tomnomnom/waybackurls@latest;
 sudo mv ~/go/bin/waybackurls /usr/local/bin;
-echo "${GREEN}Installed Successfully....${NC}";
+echo -e "${GREEN}Installed Successfully....${NC}";
 sleep 3;
 
 #Installing Katana
-echo "${BOLD_BLUE}Installing Katana....${NC}";
+echo -e "${BOLD_BLUE}Installing Katana....${NC}";
 sudo go install github.com/projectdiscovery/katana/cmd/katana@latest;
 sudo mv ~/go/bin/katana /usr/local/bin;
-echo "${GREEN}Installed Successfully....${NC}";
+echo -e "${GREEN}Installed Successfully....${NC}";
 sleep 3;
 
 #Installing GAU
-echo "${BOLD_BLUE}Installing GAU....${NC}";
+echo -e "${BOLD_BLUE}Installing GAU....${NC}";
 sudo go install github.com/lc/gau/v2/cmd/gau@latest;
 sudo mv ~/go/bin/gau /usr/local/bin;
-echo "${GREEN}Installed Successfully....${NC}";
+echo -e "${GREEN}Installed Successfully....${NC}";
 sleep 3;
 
 #Installing SubFinder
-echo "${BOLD_BLUE}Installing SubFinder....${NC}";
+echo -e "${BOLD_BLUE}Installing SubFinder....${NC}";
 sudo go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest;
 sudo mv ~/go/bin/subfinder /usr/local/bin;
-echo "${GREEN}Installed Successfully....${NC}";
+echo -e "${GREEN}Installed Successfully....${NC}";
 sleep 3;
 
 #Installing URO
-echo "${BOLD_BLUE}Installing URO....${NC}";
+echo -e "${BOLD_BLUE}Installing URO....${NC}";
 pipx install uro;
-echo "${GREEN}Installed Successfully....${NC}";
+echo -e "${GREEN}Installed Successfully....${NC}";
 sleep 3;
 
 #Installing GF
-echo "${BOLD_BLUE}Installing GF....${NC}";
+echo -e "${BOLD_BLUE}Installing GF....${NC}";
 sudo go install github.com/tomnomnom/waybackurls@latest;
 cd ~;
 git clone https://github.com/1ndianl33t/Gf-Patterns;
 mkdir .gf;
 mv ~/Gf-Patterns/*.json ~/.gf;
-echo "${GREEN}Installed Successfully....${NC}";
+echo -e "${GREEN}Installed Successfully....${NC}";
 sleep 3;
 
 #Getting Ghauri
-echo "${BOLD_BLUE}Installing Ghauri....${NC}";
+echo -e "${BOLD_BLUE}Installing Ghauri....${NC}";
 cd ~; mkdir git; cd git;
 git clone https://github.com/r0oth3x49/ghauri.git;
 cd ghauri; python3 -m pip install --upgrade -r requirements.txt;
 python3 -m pip install -e .;
-echo "${GREEN}Got SecLists Successfully....${NC}";
+echo -e "${GREEN}Got SecLists Successfully....${NC}";
 sleep 3;
 
 #Getting Xss0rRecon
-echo "${BOLD_BLUE}Installing Xss0rRecon....${NC}";
+echo -e "${BOLD_BLUE}Installing Xss0rRecon....${NC}";
 cd ~; cd git;
 git clone https://github.com/xss0r/xssorRecon.git;
-echo "${GREEN}Got Xss0rRecon Successfully....${NC}";
+echo -e "${GREEN}Got Xss0rRecon Successfully....${NC}";
 sleep 3;
 
 #Getting Seclists
-echo "${BOLD_BLUE}Installing SecLists....${NC}";
+echo -e "${BOLD_BLUE}Installing SecLists....${NC}";
 cd ~; cd git;
 git clone https://github.com/danielmiessler/SecLists.git;
-echo "${GREEN}Got SecLists Successfully....${NC}";
+echo -e "${GREEN}Got SecLists Successfully....${NC}";
 sleep 3;
 
-else echo "${RED}Go Lang Installation failed for some reason........${NC}"; fi
+else echo -e "${RED}Go Lang Installation failed for some reason........${NC}"; fi
 
 
