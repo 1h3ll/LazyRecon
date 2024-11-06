@@ -28,7 +28,7 @@ if go version | grep -q "go version" && go version | grep -q "linux/amd64"; then
 
 #Installing HTTPX
 echo -e "${BOLD_BLUE}Installing HTTPX....${NC}";
-sudo go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest;
+go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest;
 sudo mv ~/go/bin/httpx /usr/local/bin;
 echo -e "${GREEN}Installed Successfully....${NC}";
 sleep 3;
