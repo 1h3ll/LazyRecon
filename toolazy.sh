@@ -10,11 +10,15 @@ GREEN='\033[0;32m'
 echo -e "${BOLD_BLUE}Updating...${NC}"; sudo apt update; echo -e "${GREEN}Updated.${NC}"; echo -e "${BOLD_BLUE}Upgrading....${NC}"; sudo apt upgrade -y; echo -e "${GREEN}Upgraded.${NC}"; sudo apt autoremove -y; echo -e "${GREEN}Autoremove Successfull.${NC}";
 
 #Installing GO_Lang
-wget https://go.dev/dl/go1.22.5.linux-amd64.tar.gz
-sudo tar -C /usr/local -xzf go1.22.5.linux-amd64.tar.gz
-echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.zshrc
+#wget https://go.dev/dl/go1.22.5.linux-amd64.tar.gz
+#sudo tar -C /usr/local -xzf go1.22.5.linux-amd64.tar.gz
+#echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.zshrc
+wget https://go.dev/dl/go1.23.2.linux-amd64.tar.gz
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.23.2.linux-amd64.tar.gz
+echo 'export PATH=$PATH:/usr/local/go/bin' >>/.profile 
+source ~/.profile
 
-source ~/.zshrc
+#source ~/.zshrc
 
 #Checking GO installation
 if go version | grep -q "go version" && go version | grep -q "linux/amd64"; then echo -e "${BOLD_WHITE}Go Lang Installed successfully${NC}";
