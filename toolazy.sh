@@ -13,10 +13,13 @@ echo -e "${BOLD_BLUE}Updating...${NC}"; sudo apt update; echo -e "${GREEN}Update
 #wget https://go.dev/dl/go1.22.5.linux-amd64.tar.gz
 #sudo tar -C /usr/local -xzf go1.22.5.linux-amd64.tar.gz
 #echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.zshrc
-wget https://go.dev/dl/go1.23.2.linux-amd64.tar.gz
-rm -rf /usr/local/go && tar -C /usr/local -xzf go1.23.2.linux-amd64.tar.gz
-echo 'export PATH=$PATH:/usr/local/go/bin' >>/.profile 
-source ~/.profile
+wget https://go.dev/dl/go1.22.5.linux-amd64.tar.gz
+sudo tar -C /usr/local -xzf go1.22.5.linux-amd64.tar.gz
+export PATH=$PATH:/usr/local/go/bin
+go version
+sudo rm -r go1.22.5.linux-amd64.tar.gz
+sleep 3
+
 
 #source ~/.zshrc
 
