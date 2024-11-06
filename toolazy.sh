@@ -12,9 +12,9 @@ echo -e "${BOLD_BLUE}Updating...${NC}"; sudo apt update; echo -e "${GREEN}Update
 #Installing GO_Lang
 wget https://go.dev/dl/go1.22.5.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.22.5.linux-amd64.tar.gz
-echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.profile
+echo 'export PATH=$PATH:/usr/local/go/bin' >> ~/.zshrc
 
-source ~/.profile
+source ~/.zshrc
 
 #Checking GO installation
 if go version | grep -q "go version" && go version | grep -q "linux/amd64"; then echo -e "${BOLD_WHITE}Go Lang Installed successfully${NC}";
