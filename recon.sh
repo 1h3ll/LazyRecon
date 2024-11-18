@@ -229,16 +229,7 @@ fi
 
     # Step 9: Install Katana
     show_progress "Installing Katana"
-    sudo go install github.com/projectdiscovery/katana/cmd/katana@latest
-
-    # Copy Katana to /usr/local/bin and /usr/bin
-    sudo cp ~/go/bin/katana /usr/local/bin/
-    sudo cp ~/go/bin/katana /usr/bin/
-    sudo cp ~/go/bin/gau /usr/local/bin/
-    sudo cp ~/go/bin/gau /usr/bin/
-    sudo cp ~/go/bin/waybackurls /usr/local/bin/
-    sudo cp ~/go/bin/waybackurls /usr/bin/
-    sleep 3
+    go install github.com/projectdiscovery/katana/cmd/katana@latest
 
     # Step 10: Install Waybackurls
     show_progress "Installing Waybackurls"
@@ -249,6 +240,12 @@ fi
     show_progress "Installing Gau"
     go install github.com/lc/gau/v2/cmd/gau@latest
     sudo bash -c 'echo -e "[gau]\nwayback = true\ncommoncrawl = true\notx = false" > /root/.gau.toml'
+    sleep 3
+
+    # Copy Katana to /usr/local/bin and /usr/bin
+    sudo mv ~/go/bin/katana /usr/local/bin/
+    sudo mv ~/go/bin/gau /usr/local/bin/
+    sudo mv ~/go/bin/waybackurls /usr/local/bin/
     sleep 3
 
     # Step 12: Install Uro
