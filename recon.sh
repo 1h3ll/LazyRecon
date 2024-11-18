@@ -242,16 +242,12 @@ fi
 
     # Step 10: Install Waybackurls
     show_progress "Installing Waybackurls"
-    sudo go install github.com/tomnomnom/waybackurls@latest
-    sudo cp ~/go/bin/waybackurls /usr/local/bin/
-    sudo cp ~/go/bin/waybackurls /usr/bin/
+    go install github.com/tomnomnom/waybackurls@latest
     sleep 3
 
     # Step 11: Install Gau
     show_progress "Installing Gau"
-    sudo go install github.com/lc/gau/v2/cmd/gau@latest
-    sudo cp ~/go/bin/gau /usr/local/bin/
-    sudo cp ~/go/bin/gau /usr/bin/
+    go install github.com/lc/gau/v2/cmd/gau@latest
     sudo bash -c 'echo -e "[gau]\nwayback = true\ncommoncrawl = true\notx = false" > /root/.gau.toml'
     sleep 3
 
@@ -287,6 +283,7 @@ fi
     git clone https://github.com/1ndianl33t/Gf-Patterns
     mkdir .gf
     mv ~/Gf-Patterns/*.json ~/.gf
+    sudo mv ~/go/bin/httpx /usr/local/bin
 
     #Getting Ghauri
     show_progress "Installing Ghauri"
