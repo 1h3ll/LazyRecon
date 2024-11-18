@@ -281,6 +281,7 @@ fi
     mkdir .gf
     mv ~/Gf-Patterns/*.json ~/.gf
     sudo mv ~/go/bin/httpx /usr/local/bin
+    sudo rm -r ~/Gf-Patterns
 
     #Getting Ghauri
     show_progress "Installing Ghauri"
