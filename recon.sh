@@ -98,6 +98,10 @@ install_tools() {
     show_progress "Installing/Upgrading pip"
     sudo apt update && sudo apt install python3-pip -y
     sudo pip3 install --upgrade pip --root-user-action=ignore
+    
+    # Reinstall setuptools to ensure it's correctly configured
+    python3 -m pip install --upgrade --force-reinstall setuptools
+    
     sleep 3
 
     # Step 3: Install Go
