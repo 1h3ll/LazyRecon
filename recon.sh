@@ -228,7 +228,7 @@ fi
 
     # Step 8: Install Hakrawler
     show_progress "Installing Hakrawler"
-    sudo apt install -y hakrawler
+    go install github.com/hakluke/hakrawler@latest
     sleep 3
 
     # Step 9: Install Katana
@@ -292,7 +292,7 @@ fi
     cd ~; mkdir git; cd git;
     git clone https://github.com/r0oth3x49/ghauri.git
     cd ghauri; python3 -m pip install --upgrade -r requirements.txt
-    python3 -m pip install -e .;
+    python3 -m pip install -e . --break-system-packages --root-user-action=ignore;
     sleep 3;
 
     #Getting Seclists
