@@ -250,6 +250,8 @@ fi
     sudo mv ~/go/bin/katana /usr/local/bin/
     sudo mv ~/go/bin/gau /usr/local/bin/
     sudo mv ~/go/bin/waybackurls /usr/local/bin/
+    sudo mv ~/go/bin/gf /usr/local/bin/
+    sudo mv ~/go/bin/hakrawler /usr/local/bin/
     sleep 3
 
     # Step 12: Install Uro
