@@ -1,5 +1,9 @@
 #!/bin/bash
 
+sudo apt-get update -y;
+sudo apt-get upgrade -y;
+sudo apt-get autoremove -y;
+
 # Function to handle errors with manual installation solutions
 handle_error_with_solution() {
     echo -e "${RED}Error occurred during the execution of $1. Exiting step but continuing with the next installation.${NC}"
