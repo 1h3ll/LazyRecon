@@ -836,68 +836,6 @@ sleep 3
     mv ibro-xss.txt "${domain_name}-query.txt"
     echo -e "${BOLD_BLUE}Cleaned up and renamed output to ${domain_name}-query.txt.${NC}"
     sleep 3
-
-    # Step 3: Checking page reflection on the URLs
-if [ -f "reflection.py" ]; then
-    echo -e "${BOLD_WHITE}Checking page reflection on the URLs with command: python reflection.py ${domain_name}-query.txt --threads 2${NC}"
-    python reflection.py "${domain_name}-query.txt" --threads 2 || handle_error "reflection.py execution"
-    sleep 5
-
-    # Check if xss.txt is created after reflection.py
-    if [ -f "xss.txt" ]; then
-        # Check if xss.txt has any URLs (non-empty file)
-        total_urls=$(wc -l < xss.txt)
-        if [ "$total_urls" -eq 0 ]; then
-            # If no URLs were found, stop the tool
-            echo -e "\033[1;36mNo reflective URLs were identified. The process will terminate, and no further XSS testing will be conducted.\033[0m"
-            exit 0
-        else
-            echo -e "${BOLD_WHITE}Page reflection done! New file created: xss.txt${NC}"
-
-            # Display the number of URLs affected by reflection
-            echo -e "${BOLD_WHITE}Total URLs reflected: ${RED}${total_urls}${NC}"
-
-            # Filtering duplicate URLs
-            echo -e "${BOLD_BLUE}Filtering duplicate URLs...${NC}"
-            awk '{ gsub(/^https:/, "http:"); gsub(/^http:\/\/www\./, "http://"); if (!seen[$0]++) print }' "xss.txt" | tr -d '\r' > "xss1.txt"
-            sleep 3
-
-            # Remove the original xss.txt file
-            echo -e "${BOLD_BLUE}Removing the old xss.txt file...${NC}"
-            sudo rm -r xss.txt
-            sleep 3
-
-            # Removing 99% similar parameters with bash command
-            echo -e "${BOLD_BLUE}Removing 99% similar parameters...${NC}"
-            awk -F'[?&]' '{gsub(/:80/, "", $1); base_url=$1; domain=base_url; params=""; for (i=2; i<=NF; i++) {split($i, kv, "="); if (!seen[domain kv[1]]++) {params=params kv[1]; if (i<NF) params=params "&";}} full_url=base_url"?"params; if (!param_seen[full_url]++) print $0 > "xss-urls.txt";}' xss1.txt
-            sleep 5
-
-            # Remove the intermediate xss1.txt file
-            echo -e "${BOLD_BLUE}Removing the intermediate xss1.txt file...${NC}"
-            sudo rm -r xss1.txt
-            sleep 3
-
-            # Running URO for xss-urls.txt file
-            echo -e "${BOLD_BLUE}Running URO for xss-urls.txt file...${NC}"
-            uro -i xss-urls.txt -o xss-urls1337.txt
-            rm -r xss-urls.txt
-            mv xss-urls1337.txt xss-urls.txt
-            sleep 5
-
-            # Final message with the total number of URLs in xss-urls.txt
-            total_urls=$(wc -l < xss-urls.txt)
-            echo -e "${BOLD_WHITE}New file is ready for XSS testing: xss-urls.txt with TOTAL URLs: ${total_urls}${NC}"
-            echo -e "${BOLD_WHITE}Initial Total Merged URLs in the beginning : ${RED}${total_merged_urls}${NC}"
-            echo -e "${BOLD_WHITE}Filtered Final URLs for XSS Testing: ${RED}${total_urls}${NC}"
-        fi
-    else
-        echo -e "${RED}xss.txt not found. No reflective URLs identified.${NC}"
-        echo -e "\033[1;36mNo reflective URLs were identified. The process will terminate, and no further XSS testing will be conducted.\033[0m"
-        exit 0
-    fi
-else
-    echo -e "${RED}reflection.py not found in the current directory. Skipping page reflection step.${NC}"
-fi
 }
 
 # Main script logic
