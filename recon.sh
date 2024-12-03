@@ -1,9 +1,5 @@
 #!/bin/bash
 
-sudo apt-get update -y;
-sudo apt-get upgrade -y;
-sudo apt-get autoremove -y;
-
 # Function to handle errors with manual installation solutions
 handle_error_with_solution() {
     echo -e "${RED}Error occurred during the execution of $1. Exiting step but continuing with the next installation.${NC}"
@@ -80,7 +76,10 @@ install_tools() {
     echo -e "${BOLD_WHITE}You selected: Install all tools${NC}"
     
     show_progress "Installing dependencies"
-    sudo apt update
+    sudo apt-get update -y;
+    sudo apt-get upgrade -y;
+    sudo apt-get autoremove -y;
+
     sudo apt-mark hold google-chrome-stable
     sudo apt-get install -y rsync zip unzip p7zip-full wget golang-go
     sudo apt-get install terminator
