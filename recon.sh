@@ -282,6 +282,11 @@ fi
     go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
     sudo mv ~/go/bin/subfinder /usr/local/bin
 
+    #For URLFinder
+    show_progress "Installing URLFinder"
+    go install -v github.com/projectdiscovery/urlfinder/cmd/urlfinder@latest
+    sudo mv ~/go/bin/urlfinder /usr/local/bin
+
     #For GF
     show_progress "Installing GF"
     go install github.com/tomnomnom/gf@latest
@@ -314,6 +319,7 @@ fi
     sudo chmod 755 /usr/local/bin/uro   
     sudo chmod 755 /usr/local/bin/httpx 
     sudo chmod 755 /usr/local/bin/subfinder
+    sudo chmod 755 /usr/local/bin/urlfinder
 
     # Display installed tools
     echo -e "${BOLD_BLUE}All tools have been successfully installed.${NC}"
@@ -351,6 +357,9 @@ uro -h > /dev/null 2>&1 && echo "Uro is installed" || echo "Uro is not installed
 echo -e "${BOLD_WHITE}10. Arjun:${NC}"
 arjun -h > /dev/null 2>&1 && echo "Arjun is installed" || echo "Arjun is not installed correctly"
 
+echo -e "${BOLD_WHITE}10. URLFinder:${NC}"
+urlfinder -h > /dev/null 2>&1 && echo "URLFinder is installed" || echo "URLFinder is not installed correctly"
+
 
 # Cyan and White message with tool links for manual installation
 echo -e "\n${BOLD_CYAN}If you encounter any issues or are unable to run any of the tools,${NC}"
@@ -365,6 +374,7 @@ echo -e "${BOLD_WHITE}Arjun:${NC} https://github.com/s0md3v/Arjun"
 echo -e "${BOLD_WHITE}Dnsbruter:${NC} https://github.com/RevoltSecurities/Dnsbruter"
 echo -e "${BOLD_WHITE}SubProber:${NC} https://github.com/RevoltSecurities/SubProber"
 echo -e "${BOLD_WHITE}Subdominator:${NC} https://github.com/RevoltSecurities/Subdominator"
+echo -e "${BOLD_WHITE}URLFinder:${NC} https://github.com/projectdiscovery/urlfinder"
 
 # Adding extra space for separation
 echo -e "\n\n"
@@ -506,6 +516,11 @@ run_step_4() {
     cat "${domain_name}-domains.txt" | katana | tee -a "${domain_name}-katana.txt" || handle_error "Katana crawl"
     sleep 3
 
+    # Step 3.1: Crawling with URLFinder
+    show_progress "Crawling links with URLFinder"
+    cat "${domain_name}-domains.txt" | urlfinder | tee -a "${domain_name}-urlfinder.txt" || handle_error "urlfinder crawl"
+    sleep 3
+
     # Step 4: Crawling with Waybackurls
     show_progress "Crawling links with Waybackurls"
     cat "${domain_name}-domains.txt" | waybackurls | tee -a "${domain_name}-waybackurls.txt" || handle_error "Waybackurls crawl"
@@ -541,6 +556,9 @@ run_step_4() {
     uro -i "${domain_name}-katana.txt" -o urokatana.txt &
     uro_pid_katana=$!
 
+    uro -i "${domain_name}-urlfinder.txt" -o urourlfinder.txt &
+    uro_pid_urlfinder=$!
+
     uro -i "${domain_name}-waybackurls.txt" -o urowaybackurls.txt &
     uro_pid_waybackurls=$!
 
@@ -549,7 +567,7 @@ run_step_4() {
 
     # Monitor the processes
     while kill -0 $uro_pid_gospider 2> /dev/null || kill -0 $uro_pid_hakrawler 2> /dev/null || \
-          kill -0 $uro_pid_katana 2> /dev/null || kill -0 $uro_pid_waybackurls 2> /dev/null || \
+          kill -0 $uro_pid_katana 2> /dev/null || kill -0 $uro_pid_urlfinder 2> /dev/null || kill -0 $uro_pid_waybackurls 2> /dev/null || \
           kill -0 $uro_pid_gau 2> /dev/null; do
         echo -e "${BOLD_BLUE}URO tool is still running...⌛️${NC}"
         sleep 30  # Check every 30 seconds
@@ -560,12 +578,12 @@ run_step_4() {
 
     # Step 9: Remove all previous files
 show_progress "Removing all previous files"
-sudo rm -r "${domain_name}-gospider1.txt" "${domain_name}-hakrawler1.txt" "${domain_name}-katana.txt" "${domain_name}-waybackurls.txt" "${domain_name}-gau.txt"
+sudo rm -r "${domain_name}-gospider1.txt" "${domain_name}-hakrawler1.txt" "${domain_name}-katana.txt" "${domain_name}-urlfinder.txt" "${domain_name}-waybackurls.txt" "${domain_name}-gau.txt"
 sleep 3
 
 # Step 10: Merge all URO files into one final file
 show_progress "Merging all URO files into one final file"
-cat urogospider.txt urohakrawler.txt urokatana.txt urowaybackurls.txt urogau.txt > "${domain_name}-links-final.txt"
+cat urogospider.txt urohakrawler.txt urokatana.txt urourlfinder.txt urowaybackurls.txt urogau.txt > "${domain_name}-links-final.txt"
     
 # Create new folder 'urls' and assign permissions
 show_progress "Creating 'urls' directory and setting permissions"
