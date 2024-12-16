@@ -607,7 +607,7 @@ sleep 3
 
 # Step 11: Remove all 5 previous files
 show_progress "Removing all 5 previous files"
-sudo rm -r urokatana.txt urohakrawler.txt urowaybackurls.txt urogau.txt urogospider.txt
+sudo rm -r urokatana.txt urohakrawler.txt urowaybackurls.txt urourlfinder.txt urogau.txt urogospider.txt
 sleep 3
 
 # Automatically start step 5 after completing step 4
