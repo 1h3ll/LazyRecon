@@ -104,7 +104,7 @@ install_tools() {
     sudo pip3 install --upgrade pip --root-user-action=ignore
     
     # Reinstall setuptools to ensure it's correctly configured
-    python3 -m pip install --upgrade --force-reinstall setuptools
+    python3 -m pip install --upgrade --force-reinstall setuptools --break-system-packages --root-user-action=ignore
     
     sleep 3
 
