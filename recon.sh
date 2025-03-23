@@ -87,8 +87,8 @@ install_tools() {
     sudo apt remove python3-structlog -y
 
     #Moving Python Programs to /usr/local/bin
-    sudo mv 1.py /usr/local/bin/
-    sudo mv 2.py /usr/local/bin/
+    sudo mv reflection.py /usr/local/bin/
+    sudo mv path-reflection.py /usr/local/bin/
     alias ref='python3 /usr/local/bin/reflection.py
     alias path='python3 /usr/local/bin/path-reflection.py'
     echo "
