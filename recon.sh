@@ -83,11 +83,20 @@ install_tools() {
 
     sudo apt-mark hold google-chrome-stable
     sudo apt-get install -y rsync zip unzip p7zip-full wget golang-go
-    sudo apt-get install terminator
-    sudo apt remove python3-structlog
+    sudo apt-get install terminator -y
+    sudo apt remove python3-structlog -y
 
-    # Set full permissions for the xss0rRecon folder and its contents
-    sudo chmod -R 777 "$CURRENT_DIR/xss0rRecon"
+    #Moving Python Programs to /usr/local/bin
+    sudo mv 1.py /usr/local/bin/
+    sudo mv 2.py /usr/local/bin/
+    alias ref='python3 /usr/local/bin/reflection.py
+    alias path='python3 /usr/local/bin/path-reflection.py'
+    echo "
+    #Alias command
+    alias ref='python3 /usr/local/bin/reflection.py'
+    alias path='python3 /usr/local/bin/path-reflection.py'" | tee -a .bashrc .zshrc
+    source ~/.bashrc
+    source ~/.zshrc
 
     # Step 1: Install Python3 virtual environment and structlog in venv
     show_progress "Installing python3-venv and setting up virtual environment"
