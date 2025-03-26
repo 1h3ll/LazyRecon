@@ -201,6 +201,9 @@ if [ ! -d "Subdominator" ]; then
     cd ..
     sudo sudo rm -r Subdominator
 
+    #Installing Using pip
+    pip install --upgrade subdominator --break-system-packages
+
     show_progress "Subdominator installation complete."
 
     sleep 3
@@ -225,6 +228,9 @@ if [ ! -d "SubProber" ]; then
     # Clean up by removing the cloned directory after installation
     cd ..
     sudo rm -r Subprober
+
+    #Installing Using PIP
+    pip install git+https://github.com/RevoltSecurities/Subprober.git
 
     show_progress "SubProber installation complete."
 
@@ -263,7 +269,6 @@ fi
     sudo mv ~/go/bin/katana /usr/local/bin/
     sudo mv ~/go/bin/gau /usr/local/bin/
     sudo mv ~/go/bin/waybackurls /usr/local/bin/
-    sudo mv ~/go/bin/gf /usr/local/bin/
     sudo mv ~/go/bin/hakrawler /usr/local/bin/
     sleep 3
 
@@ -304,14 +309,14 @@ fi
     git clone https://github.com/1ndianl33t/Gf-Patterns
     mkdir .gf
     mv ~/Gf-Patterns/*.json ~/.gf
-    sudo mv ~/go/bin/httpx /usr/local/bin
+    sudo mv ~/go/bin/gf /usr/local/bin
     sudo rm -r ~/Gf-Patterns
 
     #Getting Ghauri
     show_progress "Installing Ghauri"
     cd ~; mkdir git; cd git;
     git clone https://github.com/r0oth3x49/ghauri.git
-    cd ghauri; python3 -m pip install --upgrade -r requirements.txt
+    cd ghauri; python3 -m pip install --upgrade -r requirements.txt --break-system-packages --root-user-action=ignore;
     python3 -m pip install -e . --break-system-packages --root-user-action=ignore;
     sleep 3;
 
