@@ -86,19 +86,6 @@ install_tools() {
     sudo apt-get install terminator -y
     sudo apt remove python3-structlog -y
 
-    #Moving Python Programs to /usr/local/bin
-    sudo mv reflection.py /usr/local/bin/
-    sudo mv path-reflection.py /usr/local/bin/
-    cd;
-    echo "#Alias command" >> .bashrc
-    echo "#Alias command" >> .zshrc
-    echo "alias ref='python3 /usr/local/bin/reflection.py'" >> .bashrc
-    echo "alias ref='python3 /usr/local/bin/reflection.py'" >> .zshrc
-    echo "alias path='python3 /usr/local/bin/path-reflection.py'" >> .bashrc
-    echo "alias path='python3 /usr/local/bin/path-reflection.py'" >> .zshrc
-    source ~/.bashrc
-    source ~/.zshrc
-
     # Step 1: Install Python3 virtual environment and structlog in venv
     show_progress "Installing python3-venv and setting up virtual environment"
     sudo pip install structlog --break-system-packages --root-user-action=ignore
@@ -394,6 +381,20 @@ echo -e "${BOLD_WHITE}URLFinder:${NC} https://github.com/projectdiscovery/urlfin
 
 # Adding extra space for separation
 echo -e "\n\n"
+
+ #Moving Python Programs to /usr/local/bin
+ sudo mv reflection.py /usr/local/bin/
+ sudo mv path-reflection.py /usr/local/bin/
+ cd;
+ echo "#Alias command" >> .bashrc
+ echo "#Alias command" >> .zshrc
+ echo "alias ref='python3 /usr/local/bin/reflection.py'" >> .bashrc
+ echo "alias ref='python3 /usr/local/bin/reflection.py'" >> .zshrc
+ echo "alias path='python3 /usr/local/bin/path-reflection.py'" >> .bashrc
+ echo "alias path='python3 /usr/local/bin/path-reflection.py'" >> .zshrc
+ source ~/.bashrc
+source ~/.zshrc
+    
 }
 
 
