@@ -89,12 +89,13 @@ install_tools() {
     #Moving Python Programs to /usr/local/bin
     sudo mv reflection.py /usr/local/bin/
     sudo mv path-reflection.py /usr/local/bin/
-    echo "#Alias command" | tee -a .bashrc
-    echo "#Alias command" | tee -a .zshrc
-    echo "alias ref='python3 /usr/local/bin/reflection.py'" | tee -a .bashrc
-    echo "alias ref='python3 /usr/local/bin/reflection.py'" | tee -a .zshrc
-    echo "alias ref='python3 /usr/local/bin/path-reflection.py'" | tee -a .bashrc
-    echo "alias ref='python3 /usr/local/bin/path-reflection.py'" | tee -a .zshrc
+    cd;
+    echo "#Alias command" >> .bashrc
+    echo "#Alias command" >> .zshrc
+    echo "alias ref='python3 /usr/local/bin/reflection.py'" >> .bashrc
+    echo "alias ref='python3 /usr/local/bin/reflection.py'" >> .zshrc
+    echo "alias ref='python3 /usr/local/bin/path-reflection.py'" >> .bashrc
+    echo "alias ref='python3 /usr/local/bin/path-reflection.py'" >> .zshrc
     source ~/.bashrc
     source ~/.zshrc
 
