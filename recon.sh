@@ -94,8 +94,8 @@ install_tools() {
     echo "#Alias command" >> .zshrc
     echo "alias ref='python3 /usr/local/bin/reflection.py'" >> .bashrc
     echo "alias ref='python3 /usr/local/bin/reflection.py'" >> .zshrc
-    echo "alias ref='python3 /usr/local/bin/path-reflection.py'" >> .bashrc
-    echo "alias ref='python3 /usr/local/bin/path-reflection.py'" >> .zshrc
+    echo "alias path='python3 /usr/local/bin/path-reflection.py'" >> .bashrc
+    echo "alias path='python3 /usr/local/bin/path-reflection.py'" >> .zshrc
     source ~/.bashrc
     source ~/.zshrc
 
