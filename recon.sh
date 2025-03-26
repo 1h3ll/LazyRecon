@@ -89,12 +89,12 @@ install_tools() {
     #Moving Python Programs to /usr/local/bin
     sudo mv reflection.py /usr/local/bin/
     sudo mv path-reflection.py /usr/local/bin/
-    alias ref='python3 /usr/local/bin/reflection.py
-    alias path='python3 /usr/local/bin/path-reflection.py'
-    echo "
-    #Alias command
-    alias ref='python3 /usr/local/bin/reflection.py'
-    alias path='python3 /usr/local/bin/path-reflection.py'" | tee -a .bashrc .zshrc
+    echo "#Alias command" | tee -a .bashrc
+    echo "#Alias command" | tee -a .zshrc
+    echo "alias ref='python3 /usr/local/bin/reflection.py'" | tee -a .bashrc
+    echo "alias ref='python3 /usr/local/bin/reflection.py'" | tee -a .zshrc
+    echo "alias ref='python3 /usr/local/bin/path-reflection.py'" | tee -a .bashrc
+    echo "alias ref='python3 /usr/local/bin/path-reflection.py'" | tee -a .zshrc
     source ~/.bashrc
     source ~/.zshrc
 
@@ -230,7 +230,7 @@ if [ ! -d "SubProber" ]; then
     sudo rm -r Subprober
 
     #Installing Using PIP
-    pip install git+https://github.com/RevoltSecurities/Subprober.git
+    pip install git+https://github.com/RevoltSecurities/Subprober.git --break-system-packages
 
     show_progress "SubProber installation complete."
 
