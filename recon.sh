@@ -77,14 +77,14 @@ install_tools() {
     sudo mv reflection.py /usr/local/bin/
     sudo mv path-reflection.py /usr/local/bin/
     cd;
-    echo "#Alias command" >> .bashrc
-    echo "#Alias command" >> .zshrc
-    echo "alias ref='python3 /usr/local/bin/reflection.py'" >> .bashrc
-    echo "alias ref='python3 /usr/local/bin/reflection.py'" >> .zshrc
-    echo "alias path='python3 /usr/local/bin/path-reflection.py'" >> .bashrc
-    echo "alias path='python3 /usr/local/bin/path-reflection.py'" >> .zshrc
-    source ~/.bashrc
-    source ~/.zshrc
+    echo "#Alias command" >> .bashrc;
+    echo "#Alias command" >> .zshrc;
+    echo "alias ref='python3 /usr/local/bin/reflection.py'" >> .bashrc;
+    echo "alias ref='python3 /usr/local/bin/reflection.py'" >> .zshrc;
+    echo "alias path='python3 /usr/local/bin/path-reflection.py'" >> .bashrc;
+    echo "alias path='python3 /usr/local/bin/path-reflection.py'" >> .zshrc;
+    source ~/.bashrc &> /dev/null;
+    source ~/.zshrc &> /dev/null;
 
     cd $CURRENT_DIR
     
