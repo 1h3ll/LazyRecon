@@ -105,14 +105,14 @@ install_tools() {
     show_progress "Installing python3-venv and setting up virtual environment"
     sudo pip install structlog --break-system-packages --root-user-action=ignore
     sudo pip install requests --break-system-packages --root-user-action=ignore
-    sudo apt install python3-full python3-pip 
-    sudo apt install pipx 
+    sudo apt install python3-full python3-pip -y
+    sudo apt install pipx -y 
     export PATH="$PATH:/root/.local/bin"
     sleep 3
 
     # Step 2: Install the latest version of pip
     show_progress "Installing/Upgrading pip"
-    sudo apt update && sudo apt install python3-pip -y
+    sudo apt update && sudo apt install python3-pip -y --break-system-packages
     sudo pip3 install --upgrade pip --root-user-action=ignore
     
     # Reinstall setuptools to ensure it's correctly configured
