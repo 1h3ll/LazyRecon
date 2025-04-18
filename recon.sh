@@ -105,8 +105,8 @@ install_tools() {
     show_progress "Installing python3-venv and setting up virtual environment"
     sudo pip install structlog --break-system-packages --root-user-action=ignore
     sudo pip install requests --break-system-packages --root-user-action=ignore
-    sudo apt install python3-full python3-pip --break-system-packages --root-user-action=ignore
-    sudo apt install pipx --break-system-packages --root-user-action=ignore
+    sudo apt install python3-full python3-pip 
+    sudo apt install pipx 
     export PATH="$PATH:/root/.local/bin"
     sleep 3
 
