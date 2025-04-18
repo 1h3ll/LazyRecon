@@ -324,7 +324,7 @@ fi
     sleep 3;
 
     #Getting Seclists
-    show_progress "Downloading Seclists"
+    show_progress "Downloading Some Github Repostories"
     cd ~; cd git;
     git clone https://github.com/danielmiessler/SecLists.git;
     git clone https://github.com/coffinxp/loxs.git;
