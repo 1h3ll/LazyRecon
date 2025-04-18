@@ -330,6 +330,7 @@ fi
     git clone https://github.com/coffinxp/loxs.git;
     git clone https://github.com/testssl/testssl.sh;
     git clone https://github.com/intrudir/BypassFuzzer;
+    git clone https://github.com/1h3ll/LetsGoXss.git;
     sleep 3;
 
 
