@@ -327,6 +327,9 @@ fi
     show_progress "Downloading Seclists"
     cd ~; cd git;
     git clone https://github.com/danielmiessler/SecLists.git;
+    git clone https://github.com/coffinxp/loxs.git;
+    git clone https://github.com/testssl/testssl.sh;
+    git clone https://github.com/intrudir/BypassFuzzer;
     sleep 3;
 
 
