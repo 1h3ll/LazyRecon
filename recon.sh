@@ -879,86 +879,82 @@ sleep 3
 }
 
 # Main script logic
+# Display options
+   display_options
+   read -p "Enter your choice [1-8]: " choice
+   # Check if the selected option is in the correct order
+   if [[ $choice -ge 2 && $choice -le 7 && $choice -ne 4 ]]; then
+       if [[ $choice -gt $((last_completed_option + 1)) ]]; then
+           echo -e "${RED}Please respect order one by one from 1-8, you can't skip previous Options${NC}"
+           continue
+       fi
+   fi
 
-while true; do
-    # Display options
-    display_options
-    read -p "Enter your choice [1-8]: " choice
-
-    # Check if the selected option is in the correct order
-    if [[ $choice -ge 2 && $choice -le 7 && $choice -ne 4 ]]; then
-        if [[ $choice -gt $((last_completed_option + 1)) ]]; then
-            echo -e "${RED}Please respect order one by one from 1-8, you can't skip previous Options${NC}"
-            continue
-        fi
-    fi
-
-    case $choice in
-        1)
-            install_tools
-            last_completed_option=1
-            ;;
-        2)
-            read -p "Please enter a domain name (example.com): " domain_name
-            echo -e "${BOLD_WHITE}You selected: Domain name set to $domain_name${NC}"
-            last_completed_option=2
-            
-            # Automatically proceed to Step 3 after setting the domain name
-            read -p "$(echo -e "${BOLD_WHITE}Do you want to proceed with domain enumeration and filtering for $domain_name (Y/N)?: ${NC}")" proceed_to_step_3
-            if [[ "$proceed_to_step_3" =~ ^[Yy]$ ]]; then
-                echo -e "${BOLD_BLUE}Automatically continuing with step 3: Enumerate and filter domains for $domain_name...${NC}"
-                run_step_3
-                last_completed_option=3
-            else
-                echo -e "${BOLD_WHITE}You can manually start Step 3 whenever you are ready.${NC}"
-            fi
-            ;;
-        3)
-            if [ -z "$domain_name" ]; then
-                echo "Domain name is not set. Please select option 2 to set the domain name."
-            else
-                run_step_3
-                last_completed_option=3
-            fi
-            ;;
-        4)
-            if [ -z "$domain_name" ]; then
-                echo "Domain name is not set. Please select option 2 to set the domain name."
-            else
-                run_step_4
-                last_completed_option=4
-            fi
-            ;;
-        5)
-            if [ -z "$domain_name" ]; then
-                echo "Domain name is not set. Please select option 2 to set the domain name."
-            else
-                run_step_5
-                last_completed_option=5
-            fi
-            ;;
-        6)
-            if [ -z "$domain_name" ]; then
-                echo "Domain name is not set. Please select option 2 to set the domain name."
-            else
-                run_step_6
-                last_completed_option=6
-            fi
-            ;;
-        7)
-            if [ -z "$domain_name" ]; then
-                echo "Domain name is not set. Please select option 2 to set the domain name."
-            else
-                run_step_7
-                last_completed_option=7
-            fi
-            ;;
-        8)
-            echo "Exiting script."
-            exit 0
-            ;;
-        *)
-            echo "Invalid option. Please select a number between 1 and 11."
-            ;;
-    esac
-done
+   case $choice in
+       1)
+           install_tools
+           last_completed_option=1
+           ;;
+       2)
+           read -p "Please enter a domain name (example.com): " domain_name
+           echo -e "${BOLD_WHITE}You selected: Domain name set to $domain_name${NC}"
+           last_completed_option=2
+           
+           # Automatically proceed to Step 3 after setting the domain name
+           read -p "$(echo -e "${BOLD_WHITE}Do you want to proceed with domain enumeration and filtering for $domain_name (Y/N)?: ${NC}")" proceed_to_step_3
+           if [[ "$proceed_to_step_3" =~ ^[Yy]$ ]]; then
+               echo -e "${BOLD_BLUE}Automatically continuing with step 3: Enumerate and filter domains for $domain_name...${NC}"
+               run_step_3
+               last_completed_option=3
+           else
+               echo -e "${BOLD_WHITE}You can manually start Step 3 whenever you are ready.${NC}"
+           fi
+           ;;
+       3)
+           if [ -z "$domain_name" ]; then
+               echo "Domain name is not set. Please select option 2 to set the domain name."
+           else
+               run_step_3
+               last_completed_option=3
+           fi
+           ;;
+       4)
+           if [ -z "$domain_name" ]; then
+               echo "Domain name is not set. Please select option 2 to set the domain name."
+           else
+               run_step_4
+               last_completed_option=4
+           fi
+           ;;
+       5)
+           if [ -z "$domain_name" ]; then
+               echo "Domain name is not set. Please select option 2 to set the domain name."
+           else
+               run_step_5
+               last_completed_option=5
+           fi
+           ;;
+       6)
+           if [ -z "$domain_name" ]; then
+               echo "Domain name is not set. Please select option 2 to set the domain name."
+           else
+               run_step_6
+               last_completed_option=6
+           fi
+           ;;
+       7)
+           if [ -z "$domain_name" ]; then
+               echo "Domain name is not set. Please select option 2 to set the domain name."
+           else
+               run_step_7
+               last_completed_option=7
+           fi
+           ;;
+       8)
+           echo "Exiting script."
+           exit 0
+           ;;
+       *)
+           echo "Invalid option. Please select a number between 1 and 11."
+           ;;
+   esac
