@@ -99,13 +99,13 @@ install_tools() {
     sudo apt-mark hold google-chrome-stable
     sudo apt-get install -y rsync zip unzip p7zip-full wget golang-go
     sudo apt-get install terminator -y
-    sudo apt remove python3-structlog -y
+    sudo apt remove python3-structlog -y 
 
     # Step 1: Install Python3 virtual environment and structlog in venv
     show_progress "Installing python3-venv and setting up virtual environment"
     sudo pip install structlog --break-system-packages --root-user-action=ignore
     sudo pip install requests --break-system-packages --root-user-action=ignore
-    sudo apt install python3-full python3-pip -y
+    sudo apt install python3-full python3-pip -y --break-system-packages --root-user-action=ignore
     sudo apt install pipx -y 
     export PATH="$PATH:/root/.local/bin"
     sleep 3
@@ -152,11 +152,8 @@ if [ ! -d "Dnsbruter" ]; then
     pip --version
     pipx --version
 
-    # Install Dnsbruter with pip (no dependencies and force reinstall)
-    sudo pip install --no-deps --force-reinstall --break-system-packages git+https://github.com/RevoltSecurities/Dnsbruter.git
-
     # Optionally try installing with pipx as well
-    sudo pipx install git+https://github.com/RevoltSecurities/Dnsbruter.git --break-system-packages
+    sudo pipx install git+https://github.com/RevoltSecurities/Dnsbruter.git --break-system-packages --root-user-action=ignore
     sudo pipx install dnsbruter --force
 
     # Clone the repository (optional if you want the source code locally)
