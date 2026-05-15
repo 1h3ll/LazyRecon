@@ -153,11 +153,11 @@ if [ ! -d "Dnsbruter" ]; then
     pipx --version
 
     # Optionally try installing with pipx as well
-    sudo pipx install git+https://github.com/RevoltSecurities/Dnsbruter.git --break-system-packages --root-user-action=ignore
+    sudo pipx install git+https://github.com/1h3ll/Dnsbruter.git --break-system-packages --root-user-action=ignore
     sudo pipx install dnsbruter --force
 
     # Clone the repository (optional if you want the source code locally)
-    sudo git clone https://github.com/RevoltSecurities/Dnsbruter.git
+    sudo git clone https://github.com/1h3ll/Dnsbruter.git
     cd Dnsbruter
     sudo pip install . --break-system-packages --root-user-action=ignore
     cd ..
