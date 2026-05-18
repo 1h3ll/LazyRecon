@@ -216,6 +216,7 @@ if [ ! -d "SubProber" ]; then
     show_progress "Installing SubProber"
 
     # Install SubProber directly from the GitHub repository
+    sudo apt install libleveldb-dev build-essential python3-dev
     sudo pip install git+https://github.com/RevoltSecurities/Subprober.git --break-system-packages --root-user-action=ignore
 
     # Clone the repository (optional if you need the source code locally)
@@ -223,7 +224,7 @@ if [ ! -d "SubProber" ]; then
     cd Subprober
 
     # Install from local cloned repository
-    sudo pip install . --break-system-packages --root-user-action=ignore
+    sudo pip install . --break-system-packages --ignore-installed click
 
     # Clean up by removing the cloned directory after installation
     cd ..
